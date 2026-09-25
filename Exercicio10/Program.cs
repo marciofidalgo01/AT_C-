@@ -1,41 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Random random = new Random();
+        int aleatorio = random.Next(1, 51);
 
-public class Program{
-    public static void Main(string[] args){
-       
-            Random random = new Random();
+        int tentativasRestantes = 5;
+        bool acertou = false;
 
+        Console.WriteLine("Tente acertar o numero de 1 a 50");
 
-            int aleatorio = random.Next(1, 51);
-            Console.WriteLine(aleatorio);
+        while (tentativasRestantes > 0)
+        {
+            Console.WriteLine($"\n Tentativas restantes: {tentativasRestantes}");
 
-            Console.WriteLine("Tente acertar o numero de 1 a 50");
-            int tentativa = int.Parse(Console.ReadLine());
+            int tentativa;
 
-            while (true)
+            try
             {
-                if (tentativa <= 5 || tentativa >= 1)
+                tentativa = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Digite apenas numeros validos");
+                continue; 
+            }
+
+          
+            if (tentativa < 1 || tentativa > 50)
+            {
+                Console.WriteLine("Digite num intervalo de 1 a 50");
+                continue; 
+            }
+
+            if (tentativa == aleatorio)
+            {
+                Console.WriteLine("Acertou");
+                acertou = true;
+                break;
+            }
+            else
+            {
+                tentativasRestantes--;
+
+                if (tentativasRestantes > 0)
                 {
-                    Console.WriteLine("Erro: Digite num intervalo de 1 a 50");
-                }
-                else if (tentativa == aleatorio)
-                {
-                    Console.WriteLine("Acertou");
-                    break;
-                }
-                else if (tentativa != aleatorio)
-                {
-                    {
-                        Console.WriteLine("Tente novamente");
-                    }
+                    Console.WriteLine("Tente novamente");
                 }
             }
         }
+
+        if (!acertou)
+        {
+            Console.WriteLine($"\nesgotou suas tentativas. O numero aleatorio era {aleatorio}.");
+        }
     }
-
-
+}

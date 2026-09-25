@@ -15,10 +15,10 @@ public class Program{
             Aluno aluno2 = new Aluno("Pedro", "abc", "EDC", 5);
 
             aluno1.ExibirDados();
-            aluno1.VerificarAprovacao();
+            Console.WriteLine("Situação: " + aluno1.VerificarAprovacao() + "\n");
 
             aluno2.ExibirDados();
-            aluno2.VerificarAprovacao();
+            Console.WriteLine("Situação: " + aluno2.VerificarAprovacao() + "\n");
         }
 
         public class Aluno
@@ -45,15 +45,15 @@ public class Program{
             }
 
 
-            public void VerificarAprovacao()
+            public string VerificarAprovacao()
             {
                 if(MediaNotas >= 7)
                 {
-                    Console.WriteLine("Aluno aprovado \n");
+                    return "Aprovado";
                 }
                 else
                 {
-                    Console.WriteLine("Aluno reprovado \n");
+                    return "Reprovado";
                 }
 
             }

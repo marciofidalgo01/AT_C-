@@ -7,106 +7,97 @@ using System.Threading.Tasks;
 
 public class Program{
     public static void Main(string[] args){
-       
 
-            static double Soma( int a1, int a2)
+        static double Soma( int a1, int a2)
+        {
+            return a1 + a2;
+        }
+
+        static double Subtracao(int a1, int a2)
+        {
+            return a1 - a2;
+        }
+
+        static double Multiplicacao(int a1, int a2)
+        {
+            return a1 * a2;
+        }
+
+        static double Divisao(int a1, int a2)
+        {
+            if (a2 == 0)
             {
-                
-                return a1 + a2;
+                Console.WriteLine("sem dividir por zero");
+                return 0;
             }
-
-            static double Subtracao(int a1, int a2)
+            else
             {
-                return a1 - a2;
+                return (double) a1 / a2;
             }
+        }
 
-            static double Multiplicacao(int a1, int a2)
+        static void Menu()
+        {
+            try
             {
-                return a1 * a2;
-            }
+                Console.WriteLine("\nDigite um numero");
+                int numero1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite um segundo numero");
+                int numero2 = int.Parse(Console.ReadLine());
 
-            static double Divisao(int a1, int a2)
-            {
-                if (a1 <= 0 || a2 <= 0)
+                Console.WriteLine("Diga a operação \n 1: Soma \n 2: Subtracao\n 3: Multiplicacao\n 4: Divisao\n");
+                int operacao = int.Parse(Console.ReadLine());
+
+                if (operacao == 1)
                 {
-                    Console.WriteLine("sem dividir por zero");
-                    return 0;
+                    Console.WriteLine("Resultado: " + Soma(numero1, numero2));
                 }
-                else
+                else if (operacao == 2)
                 {
-                    return (double) a1 / a2;
+                    Console.WriteLine("Resultado: " + Subtracao(numero1, numero2));
                 }
-                    
+                else if (operacao == 3)
+                {
+                    Console.WriteLine("Resultado: " + Multiplicacao(numero1, numero2));
+                }
+                else if (operacao == 4)
+                {
+                    Console.WriteLine("Resultado: " + Divisao(numero1, numero2));
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro. Digite apenas numeros");
+            }
+        }
 
-            static void Menu()
+        static void Loop()
+        {
+            Menu();
+
+            while (true)
             {
                 try
                 {
-                    Console.WriteLine("\nDigite um numero");
-                    int numero1 = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Digite um segundo numero");
-                    int numero2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Digite 1 para continuar e 2 para encerrar o programa \n");
+                    int opcao = int.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Diga a operação \n 1: Soma \n 2: Subtracao\n 3: Multiplicacao\n 4: Divisao\n");
-                    int operacao = int.Parse(Console.ReadLine());
-
-                    if (operacao == 1)
+                    if (opcao == 1)
                     {
-                        Console.WriteLine("Resultado: " + Soma(numero1, numero2));
-
+                        Menu();
                     }
-                    else if (operacao == 2)
+                    else
                     {
-                        Console.WriteLine("Resultado: " + Subtracao(numero1, numero2));
-
-                    }
-                    else if (operacao == 3)
-                    {
-                        Console.WriteLine("Resultado: " + Multiplicacao(numero1, numero2));
-                    }
-                    else if (operacao == 4)
-                    {
-                        Console.WriteLine("Resultado: " + Divisao(numero1, numero2));
+                        break;
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
-                    Console.WriteLine("Ocorreu um erro. Digite apenas numeros");
-                }
-                
-
-            }
-
-           static void Loop()
-            {
-                while (true)
-                {
-                    try
-                    {
-                        Console.WriteLine("Digite 1 para continuar e 2 para encerrar o programa \n");
-                        int opcao = int.Parse(Console.ReadLine());
-
-                        if (opcao == 1)
-                        {
-                            Menu();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Digite apenas 1 ou 2 para continuar/encerrar o programa \n");
-                    }
-
+                    Console.WriteLine("Digite apenas 1 ou 2 para continuar/encerrar o programa \n");
                 }
             }
-
-
-            Loop();
-
         }
-    }
 
+        Loop();
+    }
+}

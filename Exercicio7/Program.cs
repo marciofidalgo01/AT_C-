@@ -15,6 +15,8 @@ public class Program{
 
             conta1.Depositar(500);
 
+            conta1.Depositar(-50);
+
 
         }
 
@@ -32,10 +34,19 @@ public class Program{
 
             public void Depositar(decimal Valor)
             {
-                Console.WriteLine($"Saldo atual: R${Saldo}");
+                if (Valor <= 0)
+            {
+                Console.WriteLine("O valor do deposito deve ser positivo\n");
+                return;
+            }
+            else
+            {
+                 Console.WriteLine($"Saldo atual: R${Saldo}");
                 Console.WriteLine($"Depósito de R${Valor} efetuado com sucesso");
                 Saldo = Saldo + Valor;
                 Console.WriteLine($"Saldo final: R${Saldo} \n");
+            }
+               
             }
 
             public void Sacar(decimal Valor)

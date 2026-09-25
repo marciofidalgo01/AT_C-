@@ -31,9 +31,6 @@ public class Program{
 
                 using (StreamWriter escrever = new StreamWriter(arquivo, true))
                 {
-                    // escrever.Write("Nome: " +  nome + " | ");
-                    // escrever.Write("Email: "+ email + " | ");
-                    // escrever.Write("Telefone "+ telefone + "");
                     escrever.WriteLine($"{nome},{telefone},{email}");
                 }
 
