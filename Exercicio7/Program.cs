@@ -51,7 +51,12 @@ public class Program{
 
             public void Sacar(decimal Valor)
             {
-               if(Valor <= Saldo)
+                if (Valor <= 0)
+                {
+                    Console.WriteLine("O valor do saque deve ser positivo!");
+                    return;
+                }
+               else if(Valor <= Saldo)
                 {
                     Console.WriteLine($"Saldo atual: R${Saldo}");
                     Console.WriteLine($"Saque de R${Valor} efetuado com sucesso");
