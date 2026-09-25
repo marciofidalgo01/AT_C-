@@ -141,9 +141,9 @@ public class Contato
     public string Email { get; set; }
 }
 
-public abstract class ContatoFormatter
+public class ContatoFormatter
 {
-    public abstract void ExibirContatos(List<Contato> contatos);
+    public virtual void ExibirContatos(List<Contato> contatos);
     
 }
 
